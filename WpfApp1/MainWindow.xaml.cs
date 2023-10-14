@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Business;
+using Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,22 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private BCustomer productBusiness;
+
         public MainWindow()
         {
             InitializeComponent();
+            productBusiness = new BCustomer(); // Configura la cadena de conexión a la base de datos.
+        }
+        private void BuscarProductosPorNombre_Click(object sender, RoutedEventArgs e)
+        {
+            string productName = TextBoxNombreProducto.Text; // Obtener el nombre ingresado por el usuario
+
+            // Llama a la función de la capa de negocio para obtener los productos por nombre
+            List<Customer> products = productBusiness.GetCustomersByName(productName);
+
+            // Asigna los resultados al ListView
+            ListViewResultados.ItemsSource = products;
         }
     }
 }

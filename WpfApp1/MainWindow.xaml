@@ -7,6 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Nombre del Producto:"/>
+            <TextBox x:Name="TextBoxNombreProducto" Width="200"/>
+            <Button Content="Buscar" Click="BuscarProductosPorNombre_Click" Margin="0 10"/>
+            <ListView x:Name="ListViewResultados">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ProductId}"/>
+                        <GridViewColumn Header="Nombre" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Precio" DisplayMemberBinding="{Binding Price}"/>
+                        <GridViewColumn Header="Stock" DisplayMemberBinding="{Binding Stock}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Window>
